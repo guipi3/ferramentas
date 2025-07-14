@@ -36,3 +36,14 @@ Thumbs.db
 ehthumbs.db
 Icon?
 Desktop.ini
+# frontend
+frontend/node_modules/
+frontend/.cache/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+
+# backend
+backend/node_modules/
+backend/dist/
+backend/build/
