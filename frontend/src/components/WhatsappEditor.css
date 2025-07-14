@@ -1,0 +1,81 @@
+.whatsapp-editor {
+  margin: 15px 0;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.preview-toggle {
+  display: flex;
+  gap: 5px;
+}
+
+.preview-toggle button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.preview-toggle button.active {
+  background: #005F4E;
+  color: white;
+  border-color: #005F4E;
+}
+
+.md-editor-custom {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.formatting-help {
+  margin-top: 8px;
+  font-size: 0.8em;
+  color: #666;
+  text-align: right;
+}
+
+.formatting-help p {
+  margin: 0;
+}
+
+.whatsapp-editor .editor-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.preview-toggle button {
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.preview-toggle button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.emoji-button {
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 6px;
+}
+
+.emoji-picker-container {
+  position: absolute;
+  z-index: 999;
+  margin-top: 6px;
+}
