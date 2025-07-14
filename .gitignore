@@ -33,3 +33,13 @@ Thumbs.db
 ehthumbs.db
 Icon?
 Desktop.ini
+
+
+# backend
+backend/node_modules/
+backend/dist/
+backend/build/
+
+node_modules
+build
+*.log
