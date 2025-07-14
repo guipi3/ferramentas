@@ -1,0 +1,35 @@
+# ================================
+# Diretórios do frontend
+# ================================
+frontend/node_modules/
+frontend/.cache/
+frontend/dist/
+frontend/.vite/
+
+# ================================
+# Diretórios do backend
+# ================================
+backend/*
+
+# ================================
+# Ignorar arquivos temporários e de sistema
+# ================================
+*.log
+*.env
+*.env.local
+*.env.*.local
+.DS_Store
+Thumbs.db
+
+# ================================
+# IDEs
+# ================================
+.vscode/
+.idea/
+
+# ================================
+# Sistema operacional
+# ================================
+ehthumbs.db
+Icon?
+Desktop.ini
