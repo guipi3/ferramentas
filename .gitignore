@@ -47,3 +47,7 @@ frontend/.vite/
 backend/node_modules/
 backend/dist/
 backend/build/
+
+node_modules
+build
+*.log
