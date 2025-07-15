@@ -30,8 +30,11 @@ const App = () => {
     try {
       let links = [];
 
+      const containsEmoji = (text) => {
+        return /[\p{Emoji}]/u.test(text);
+      };
+
       if (isBatchMode) {
-        // Divide pelos separadores e limpa números
         const numbers = phoneNumber
           .split(/[\n,;]+/)
           .map(num => num.replace(/\D/g, ''))
@@ -45,21 +48,37 @@ const App = () => {
 
         const normalizedMessage = (message || '').normalize('NFKC');
         const encodedMessage = encodeURIComponent(normalizedMessage);
-        links = numbers.map(
-          num => `https://wa.me/${selectedCountry.ddi.replace('+', '')}${num}?text=${encodedMessage}`
-        );
+        const useApiFormat = containsEmoji(normalizedMessage);
+
+        links = numbers.map(num => {
+          const fullNumber = `${selectedCountry.ddi.replace('+', '')}${num}`;
+          if (useApiFormat) {
+            return `https://api.whatsapp.com/send/?phone=${fullNumber}&text=${encodedMessage}&type=phone_number&app_absent=0`;
+          } else {
+            return `https://wa.me/${fullNumber}?text=${encodedMessage}`;
+          }
+        });
+
       } else {
-        // Único número
         const singleNumber = phoneNumber.replace(/\D/g, '');
         if (singleNumber.length === 0) {
           setError('Número inválido');
           setIsLoading(false);
           return;
         }
+
         const normalizedMessage = (message || '').normalize('NFKC');
         const encodedMessage = encodeURIComponent(normalizedMessage);
-        links = [`https://wa.me/${selectedCountry.ddi.replace('+', '')}${singleNumber}?text=${encodedMessage}`];
+        const fullNumber = `${selectedCountry.ddi.replace('+', '')}${singleNumber}`;
+        const useApiFormat = containsEmoji(normalizedMessage);
+
+        links = [
+          useApiFormat
+            ? `https://api.whatsapp.com/send/?phone=${fullNumber}&text=${encodedMessage}&type=phone_number&app_absent=0`
+            : `https://wa.me/${fullNumber}?text=${encodedMessage}`
+        ];
       }
+
 
       setGeneratedLink(links.join('\n'));
     } catch (err) {
@@ -182,7 +201,7 @@ const App = () => {
       <footer className="app-footer">
           {/* ANÚNCIO 3 - Rodapé */}
   <AdBlock slot="3333333333" format="auto" style={{ marginBottom: '1rem' }} />
-        <p>© {new Date().getFullYear()} Hojetech - Todos os direitos reservados</p>
+        <p>© 2022 Hojetech - Todos os direitos reservados</p>
       </footer>
     </div>
   );
