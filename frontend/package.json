@@ -1,5 +1,6 @@
 {
   "name": "whatsapp-link-generator-frontend",
+  "homepage": "https://ferramentas.hojetech.com.br",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
